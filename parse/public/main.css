@@ -4,6 +4,10 @@ nav ul{
 	/*Make this pull-right*/
 }
 
+header .nav-container{
+	width:100%;
+}
+
 nav form input{
 	max-width: 100px;
 }
