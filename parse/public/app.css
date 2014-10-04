@@ -1,1 +1,10 @@
 body { padding-top: 50px; }
+.commerce-scroll { 
+	position: fixed;
+	height: auto;
+	width: auto;
+	min-width: 35%;
+	max-height: 80%;
+	overflow-y: scroll;
+	margin-top: 10px;
+}
