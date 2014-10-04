@@ -11,11 +11,15 @@
         <ul class="nav nav-tabs">
           <li><a href="#">Home</a></li>
           <li><a href="#">App</a></li>
-          <li><a href="#">Login</a></li>
-          <li><form><input type="text" name="email"></form></li>
-          <li><a href="#">Sign Up</a></li>
-          <li><form><input type="password" name="password"></form></li>
+          <form class="navbar-form navbar-left" role="login">
+            <div class="form-group">
+              <input type="text" class="form-control" name="email">
+              <input type="password" class="form-control" name="password">
+              <input type="submit" value="Login">
+            </div>
+          </form>
         </ul>
+          
       </nav>
     </header>
 
