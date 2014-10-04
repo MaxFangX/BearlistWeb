@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Bear List": {
+            "applicationId": "0DjH3hlL03Nf8neV0qBuG8LfgzrGx6xZBOSN8zwi", 
+            "masterKey": "phEpNTkyZBKoanFCFvXOzxkWvEIohJ8Bxn3eGiqv"
+        }, 
+        "_default": {
+            "link": "Bear List"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.0"
+    }
+}
