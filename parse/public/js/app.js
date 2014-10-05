@@ -17,7 +17,7 @@ getAllPosts = function(){
 }
 
 //Function that is called when submit is pressed
-$()
+$('upload-btn').submit()
 
 submitPost = function(){
 
