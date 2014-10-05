@@ -21,10 +21,43 @@ simpleSave = function(obj){
 
 $("#brand").click(function(){
 	//alert('test');
+	htmlString = '';
+	htmlString += '<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title">';
+	htmlString += getCollapse();
+	htmlString += getTitle();
+	htmlString += '<br>';
+	htmlString += getDateTime();
+	htmlString += '</a></h4></div><div id="collapseOne" class="panel-collapse collapse"><div class="panel-body">';
+	htmlString += getDescription();
+	htmlString += '<div class="container"><div class="row" style="width: 90%"><div class="col-xs-6 col-md-3"><a href="#" class="thumbnail">';
+	htmlString += getImage();
+	htmlString += '</a></div></div></div></div></div></div>';
+	$('.panel .panel-default').append(htmlString);
+});
 
+getCollapse = function(){
 
+	return '<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">';
+}
+
+getTitle = function(){
+	return 'Max For Sale';
+}
+
+getDateTime = function(){
 	
-})
+	return '<small>Posted one hour ago at 3:35 PM 10/4/2014</small>';
+}
+
+getDescription = function(){
+
+	return '<p>very sxc bod sxc men sxc much cheap 58 cents (btw when the machines take over you can make change of that 1294 ways lols)</p>';
+}
+
+getImage = function(){
+
+	return '<img src="http://i.imgur.com/b8SsFnhs.jpg" alt="...">';
+}
 
 
 
