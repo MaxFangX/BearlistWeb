@@ -183,7 +183,7 @@ $('.messages-btn').click(function(){
 }});
 
 $('.logout-btn').click(function(){
-	alert('THis works fag');
+	//alert('THis works fag');
 	exit();
 });
 
