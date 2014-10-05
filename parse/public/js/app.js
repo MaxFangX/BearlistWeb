@@ -136,11 +136,19 @@ $('.messages-btn').click(function(){
 	$('.chat-page').addClass('last-page');
 }});
 
+//Log out
+exit = function(){
+	Parse.User.logOut();
+	var currentUser = Parse.User.current();
+}
+
+
 //Testing purposes
 $("#brand").click(function(){
 	//alert('test');
 	//makePost('maxfangx@gmail.com', '63 XXL Condoms', 'Courtesy of David Nguyen');
-	getAllPosts();
+	//getAllPosts();
+	exit();
 });
 
 //To test that app.js works

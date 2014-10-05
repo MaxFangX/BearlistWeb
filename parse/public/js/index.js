@@ -58,6 +58,7 @@ enter = function(email, password){
 			alert('The login failed.'+error.code+' '+error.message);
 		}
 	});
+	event.preventDefault();
 }
 
 //Log out
