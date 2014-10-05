@@ -11,6 +11,11 @@ var name = Parse.User.current().fetch().then(function (user) {
 	user.get('name')
 });
 
+$('.msg-user').click(function(){
+	alert('this button fucking works faggot');
+	timeline();
+});
+
 function get_token(other_user) {
     var init_options = {
         uniqueid: uniqueid,

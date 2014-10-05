@@ -182,10 +182,16 @@ $('.messages-btn').click(function(){
 	$('.chat-page').addClass('last-page');
 }});
 
+$('.logout-btn').click(function(){
+	alert('THis works fag');
+	exit();
+});
+
 //Log out
 exit = function(){
 	Parse.User.logOut();
 	var currentUser = Parse.User.current();
+	document.location.href = 'index.html';
 }
 
 //KeepUser
