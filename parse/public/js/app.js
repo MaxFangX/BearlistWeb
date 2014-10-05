@@ -21,22 +21,21 @@ $('.upload-btn').click(function(){
 	var email = 'default';
 	// var store = Parse.User.current().getUserName();
 	// console.log(store);
-
 	var id = Parse.User.current().id;
 	console.log('id: '+id);
-
 	var User = Parse.Object.extend("User");
 	var query = new Parse.Query(User);
-	var returnValue = '';
 	query.get(id, {
 	  success: function(query) {
 	    // The object was retrieved successfully.
 	    //alert('GetCurrentUserEmail() successful');
-	    returnValue = query.get("username");
-	    console.log('return: '+returnValue);
-	    email = returnValue;
-	    alert(returnValue);
-	    return returnValue;
+	    email = query.get("username");
+		//console.log('email: '+ email);
+		var title = $('#post-title').val();
+		//console.log('title: '+ title);
+		var description = $('#post-description').val();
+		//console.log('description: '+description);
+		makePost(email, title, description);
 	  },
 	  error: function(object, error) {
 	    // The object was not retrieved successfully.
@@ -45,20 +44,7 @@ $('.upload-btn').click(function(){
 	    return 'bad email';
 	  }
 	});
-	
-	console.log('emailerg: '+ email);
-	var title = $('#post-title').val();
-	console.log('title: '+ title);
-	var description = $('#post-description').val();
-	console.log('description: '+description);
-
-	
 });
-// }
-
-// });
-
-
 
 
 //Makes a new post
