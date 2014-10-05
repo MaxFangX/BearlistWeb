@@ -2,19 +2,7 @@
 Parse.initialize("0DjH3hlL03Nf8neV0qBuG8LfgzrGx6xZBOSN8zwi", 
 	"vD6Ar9262yegpOE1hXQm8XKMeNNMkpGd6DwmNYoU");
 
-//Returns an array of all the posts
-getAllPosts = function(){
-	var Post = Parse.Object.extend("post");
-	var query = new Parse.Query(Post);
-	query.find({
-		success: function(results){
-			//alert('Retrieved '+results.length+' results.');
-		},
-		error: function(error){
-			//alert("Error: " + error.code + " " + error.message);
-		}
-	});
-}
+
 
 //Function that is called when submit is pressed
 $('.upload-btn').click(function(){
@@ -90,6 +78,57 @@ makePostWithImage = function(email, title, description, image){
 	});
 }
 
+//Returns an array of all the posts
+getAllPosts = function(){
+	var Post = Parse.Object.extend("post");
+	var query = new Parse.Query(Post);
+	//alert(query.length);
+	query.find({
+		success: function(results){ 
+			//results.descending("createdAt");
+			//alert('Retrieved '+results.length+' results.');
+			addAllPosts(results);
+		},
+		error: function(error){
+			//alert("Error: " + error.code + " " + error.message);
+		}
+	});
+}
+
+//Display all the posts
+addAllPosts = function(postArr){
+	var Post = Parse.Object.extend("post");
+	var query = new Parse.Query(Post);
+
+	for(i = 0; i < 3; i++){
+		id = postArr[i].id;
+		//console.log(id);
+		query.get(id, {
+		  success: function(query) {
+		    // The object was retrieved successfully.
+		    //alert('GetCurrentUserEmail() successful');
+		    var email = query.get("author");
+			console.log('email: '+ email);
+			var title = query.get("title");
+			console.log('title: '+ title);
+			var description = query.get("description");
+			console.log('description: '+description);
+			var created = query.get("createdAt");
+			console.log('created: '+created);
+			addPost(email, title, description, created);
+		  },
+		  error: function(object, error) {
+		    // The object was not retrieved successfully.
+		    // error is a Parse.Error with an error code and message.
+		    alert('GetCurrentUserEmail() failed');
+		    return 'bad email';
+		  }
+		});		
+
+
+
+	}
+}
 
 //Gets number of new posts
 getPostNumber = function(){
@@ -101,50 +140,18 @@ getPostNumber = function(){
 	return posts.length+1;
 }
 
-//Completed
-getCollapse = function(){
-	var result = '<a data-toggle="collapse" data-parent="#accordion" href="#collapse';
-	result += getPostNumber();
-	result += '">';
+postedByCurrentUser = function(){
+	return '';
 }
 
-//Completed
-getTitle = function(){
-	return 'Max For Sale';
-}
-//TODO
-getDateTime = function(){
-	
-	return '<small>Posted one hour ago at 3:35 PM 10/4/2014</small>';
-}
-//TODO
-getDescription = function(){
+addPost = function(email, title, description, created){
+	var htmlString = '';
+	htmlString += '<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse'+getPostNumber()+'">'+title+'<br><small>Posted at '+created+'</small></a></h4></div><div id="collapse'+getPostNumber()+'" class="panel-collapse collapse"><!-- Listing content --><div class="panel-body"><p>'+description+'</p><!-- Thumbnails in listing content --><div class="container"> <div class="row" style="width: 90%"><div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="http://i.imgur.com/2udI0ews.jpg" alt="..."></a></div></div></div></div></div></div> <!-- End div for one listing lols -->';
 
-	return '<p>very sxc bod sxc men sxc much cheap 58 cents (btw when the machines take over you can make change of that 1294 ways lols)</p>';
-}
-//TODO
-getImage = function(){
-
-	return '<img src="http://i.imgur.com/b8SsFnhs.jpg" alt="...">';
-}
-
-addPost = function(){
-	htmlString = '';
-	htmlString += '<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title">';
-	htmlString += getCollapse();
-	htmlString += getTitle();
-	htmlString += '<br>';
-	htmlString += getDateTime();
-	htmlString += '</a></h4></div><div id="collapse';
-	htmlString += getPostNumber();
-	htmlString += '" class="panel-collapse collapse"><div class="panel-body">';
-	htmlString += getDescription();
-	htmlString += '<div class="container"><div class="row" style="width: 90%"><div class="col-xs-6 col-md-3"><a href="#" class="thumbnail">';
-	htmlString += getImage();
-	htmlString += '</a></div></div></div></div></div></div>';
 	$('.panel .panel-default').append(htmlString);
 }
 
+//Toggling
 $('.buy-btn').click(function(){
 	if($('.buy-page').hasClass('last-page')){}
 	else{
@@ -201,7 +208,10 @@ $("#brand").click(function(){
 	//alert('test');
 	//makePost('maxfangx@gmail.com', '63 XXL Condoms', 'Courtesy of David Nguyen');
 	//getAllPosts();
-	exit();
+	
+	//exit();
+	getAllPosts();
+
 });
 
 //To test that app.js works
