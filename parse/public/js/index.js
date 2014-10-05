@@ -39,20 +39,25 @@ $('.btn-register').click(function(){
 
 //Logging in
 $('.login-btn').click(function(){
-	email = $('login-email');
-	password = $('login-password');
+	var email = $('.login-email').val();
+	var password = $('.login-password').val();
+	enter(email,password);
 });
 
 //Otherwise known as log in
 enter = function(email, password){
+	//console.log('You have reach here');
 	Parse.User.logIn(email, password,{
 		success: function(user){
+			//console.log('Checkpoint 2');
 			alert('You have logged in!');
+			window.location.href = "app.html"
 		},
 		error: function(user, error){
-			alert('The login failed.');
+			//console.log('Checkpoint 3');
+			alert('The login failed.'+error.code+' '+error.message);
 		}
-	})
+	});
 }
 
 //Log out
@@ -65,7 +70,7 @@ exit = function(){
 keepUser = function(){
 	var currentUser = Parse.User.current();
 	if(currentUser){
-		//Do stuff with the user
+		window.location.replace('app.html');
 	}else{
 		//Show the signup or login page
 	}
@@ -75,5 +80,5 @@ $(document).ready(keepUser);
 
 $('.navbar-brand').click(function(){
 
-	register('maxfangx@gmail.com', 'Max Fang', 'password');
+	exit();
 })
