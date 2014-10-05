@@ -18,7 +18,9 @@ getAllPosts = function(){
 
 //Function that is called when submit is pressed
 $('.upload-btn').click(function(){
-	$('#post-description').val();
+	var title = $('#post-title').val();
+	var description = $('#post-description').val();
+	
 	console.log('Getting post description successful');
 	alert(oijerf);
 });
