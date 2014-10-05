@@ -103,18 +103,26 @@ addPost = function(){
 }
 
 $('.buy-btn').click(function(){
-	if(!this.hasClass('active-section')){
+	var current = $('.buy-btn');
+	if(!current.hasClass('active-section')){
 		var last = $('.active-section');
 		last.removeClass(active-section);
 		last.addClass('hidden');
-		this.addClass(active-section);
-		this.removeClass('hidden');
-
+		current.addClass(active-section);
+		current.removeClass('hidden');
 
 	}
 });
 $('.sell-btn').click(function(){
-alert('this works!');
+	var current = $('.sell-btn');
+	if(!current.hasClass('active-section')){
+		var last = $('.active-section');
+		last.removeClass(active-section);
+		last.addClass('hidden');
+		current.addClass(active-section);
+		current.removeClass('hidden');
+
+	}
 });
 $('.my-listings-btn').click(function(){
 alert('this works!');
