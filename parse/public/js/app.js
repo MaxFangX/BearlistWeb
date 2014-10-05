@@ -2,23 +2,26 @@
 Parse.initialize("0DjH3hlL03Nf8neV0qBuG8LfgzrGx6xZBOSN8zwi", 
 	"vD6Ar9262yegpOE1hXQm8XKMeNNMkpGd6DwmNYoU");
 
-
-//Saves something to database and can alert if it was done successfully
-simpleSave = function(obj){
-	obj.save().
-	then(function(obj) {
-      // Execute any logic that should take place after the object is saved. 
-      // Uncomment for debugging
-      alert('New object created with objectId: ' + obj.id);
-    }, function(error) {
-      // Execute any logic that should take place if the save fails.
-      // error is a Parse.Error with an error code and message.
-      // Uncomment for debugging.
-      alert('Failed to create new object, with error code: ' + error.message);
-    });
+//Returns an array of all the posts
+getAllPosts = function(){
+	var Post = Parse.Object.extend("post");
+	var query = new Parse.Query(Post);
+	query.find({
+		success: function(results){
+			//alert('Retrieved '+results.length+' results.');
+		},
+		error: function(error){
+			//alert("Error: " + error.code + " " + error.message);
+		}
+	});
 }
 
+//Function that is called when submit is pressed
+$()
 
+submitPost = function(){
+
+}
 
 //Makes a new post
 makePost = function(email, title, description){
@@ -41,46 +44,6 @@ makePost = function(email, title, description){
 	});
 }
 
-
-
-
-getAllPosts = function(){
-	var Post = Parse.Object.extend("post");
-	var query = new Parse.Query(Post);
-	query.find({
-		success: function(results){
-			alert('Retrieved '+results.length+' results.');
-		},
-		error: function(error){
-			alert("Error: " + error.code + " " + error.message);
-		}
-	});
-}
-
-
-//Testing purposes
-$("#brand").click(function(){
-	//alert('test');
-	//makePost('maxfangx@gmail.com', '63 XXL Condoms', 'Courtesy of David Nguyen');
-	getAllPosts();
-});
-
-//Facebook guy implementation
-/*getAllPostIds = function(){
-	var q = new Parse.Query("Post");
-	return q.find().then(function(objects)) {
-		// Note(thomas): this may need to be function(index, object)
-		return Parse._.map(objects, function(object) {
-			return object.id;
-		});
-	});
-}*/
-
-
-
-
-
-
 //Gets number of new posts
 getPostNumber = function(){
 	var posts = document.getElementsByClassName('panel-title');
@@ -90,12 +53,14 @@ getPostNumber = function(){
 	}
 	return posts.length+1;
 }
+
 //Completed
 getCollapse = function(){
 	var result = '<a data-toggle="collapse" data-parent="#accordion" href="#collapse';
 	result += getPostNumber();
 	result += '">';
 }
+
 //Completed
 getTitle = function(){
 	return 'Max For Sale';
@@ -133,8 +98,12 @@ addPost = function(){
 	$('.panel .panel-default').append(htmlString);
 }
 
-
-
+//Testing purposes
+$("#brand").click(function(){
+	//alert('test');
+	//makePost('maxfangx@gmail.com', '63 XXL Condoms', 'Courtesy of David Nguyen');
+	getAllPosts();
+});
 
 //To test that app.js works
 /*var main = function(){
@@ -172,3 +141,29 @@ testObject.save({foo: "bar"}).then(function(object) {
 }
 makeAll();
 */
+
+//Facebook guy implementation
+/*getAllPostIds = function(){
+	var q = new Parse.Query("Post");
+	return q.find().then(function(objects)) {
+		// Note(thomas): this may need to be function(index, object)
+		return Parse._.map(objects, function(object) {
+			return object.id;
+		});
+	});
+}*/
+
+//Saves something to database and can alert if it was done successfully
+/*simpleSave = function(obj){
+	obj.save().
+	then(function(obj) {
+      // Execute any logic that should take place after the object is saved. 
+      // Uncomment for debugging
+      alert('New object created with objectId: ' + obj.id);
+    }, function(error) {
+      // Execute any logic that should take place if the save fails.
+      // error is a Parse.Error with an error code and message.
+      // Uncomment for debugging.
+      alert('Failed to create new object, with error code: ' + error.message);
+    });
+}*/
