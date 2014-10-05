@@ -15,6 +15,25 @@ $('.msg-user').click(function(){
 	alert('this button fucking works faggot');
 	timeline();
 });
+function init_timeline() {
+    var init_options = {
+        uniqueid: uniqueid,
+        uniqueid2: other_user,
+        firstname: uniqueid,
+        lastname: " ",
+        timestamp: timestamp,
+        signature: signature,
+        get_accesstoken: function(result) {
+            console.log("access_token: " + result.access_token + " expires in: " + result.expires_in);
+            timeline(result.access_token);
+        },
+        error: function(result) {
+            console.log("error code: " + result.error_code + " message: " + result.error_message);
+        }
+    };
+    Moxtra.setup(init_options);
+}
+
 
 function get_token(other_user) {
     var init_options = {
@@ -70,7 +89,7 @@ function startchat(access_token, uniqueid2) {
 	Moxtra.chat(options);
 }
 
-function timeline() {
+function timeline(access_token) {
 	var options = {
 	    iframe: true,
 	    tagid4iframe: "chatcontainer",
@@ -78,6 +97,7 @@ function timeline() {
 	    iframeheight: "100%",
 	    autostart_meet: true,
 	    autostart_note: true,
+	    access_token: access_token,
 	    extension: { "show_dialogs": { "meet_invite": true } },
 	    start_timeline: function(event) {
 	        alert("Timeline started session Id: " + event.session_id + " binder id: " + event.binder_id);
