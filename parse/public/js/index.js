@@ -1,6 +1,7 @@
 Parse.initialize("0DjH3hlL03Nf8neV0qBuG8LfgzrGx6xZBOSN8zwi", 
 	"vD6Ar9262yegpOE1hXQm8XKMeNNMkpGd6DwmNYoU");
 
+//Register
 $('.btn-register').click(function(){
 	username = $('#registerName').val();
 	email = $('#registerEmail').val();
@@ -13,7 +14,6 @@ $('.btn-register').click(function(){
 		alert('Passwords don\'t match!');
 	}
 });
-
 register = function(username, email, password){
 	var user = new Parse.User();
 	user.set("username", username);
@@ -31,15 +31,19 @@ register = function(username, email, password){
 
 }
 
+$('.login-btn').click(function(){
+	email = $('login-email');
+	password = $('login-password');
+});
+
 //Otherwise known as log in
 enter = function(email, password){
-	Parse.User.logIn("email", "password",{
+	Parse.User.logIn(email, password,{
 		success: function(user){
 			alert('You have logged in!');
 		},
 		error: function(user, error){
 			alert('The login failed.');
-
 		}
 	})
 }
