@@ -18,12 +18,47 @@ getAllPosts = function(){
 
 //Function that is called when submit is pressed
 $('.upload-btn').click(function(){
-	var title = $('#post-title').val();
-	var description = $('#post-description').val();
+	var email = 'default';
+	// var store = Parse.User.current().getUserName();
+	// console.log(store);
 
-	console.log('Getting post description successful');
-	alert(oijerf);
+	var id = Parse.User.current().id;
+	console.log('id: '+id);
+
+	var User = Parse.Object.extend("User");
+	var query = new Parse.Query(User);
+	var returnValue = '';
+	query.get(id, {
+	  success: function(query) {
+	    // The object was retrieved successfully.
+	    //alert('GetCurrentUserEmail() successful');
+	    returnValue = query.get("username");
+	    console.log('return: '+returnValue);
+	    email = returnValue;
+	    alert(returnValue);
+	    return returnValue;
+	  },
+	  error: function(object, error) {
+	    // The object was not retrieved successfully.
+	    // error is a Parse.Error with an error code and message.
+	    alert('GetCurrentUserEmail() failed');
+	    return 'bad email';
+	  }
+	});
+	
+	console.log('emailerg: '+ email);
+	var title = $('#post-title').val();
+	console.log('title: '+ title);
+	var description = $('#post-description').val();
+	console.log('description: '+description);
+
+	
 });
+// }
+
+// });
+
+
 
 
 //Makes a new post
@@ -47,6 +82,28 @@ makePost = function(email, title, description){
 	  }
 	});
 }
+
+makePostWithImage = function(email, title, description, image){
+	var Post = Parse.Object.extend("post");
+	var p = new Post();
+	p.set("author",email);
+	p.set("title", title);
+	p.set("description", description);
+	console.log('post created');
+	p.save(null, {
+	  success: function(p) {
+	    // Execute any logic that should take place after the object is saved.
+	    //alert('New object created with objectId: ' + p.id);
+	    $('.alert-success').removeClass('hidden');
+	  },
+	  error: function(p, error) {
+	    // Execute any logic that should take place if the save fails.
+	    // error is a Parse.Error with an error code and message.
+	    //alert('Failed to create new object, with error code: ' + error.message);
+	  }
+	});
+}
+
 
 //Gets number of new posts
 getPostNumber = function(){
