@@ -142,6 +142,16 @@ exit = function(){
 	var currentUser = Parse.User.current();
 }
 
+//KeepUser
+keepUser = function(){
+	var currentUser = Parse.User.current();
+	if(currentUser){
+		
+	}else{
+		document.location.replace('index.html');
+	}
+}
+$(document).ready(keepUser);
 
 //Testing purposes
 $("#brand").click(function(){

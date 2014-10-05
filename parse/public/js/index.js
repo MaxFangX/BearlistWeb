@@ -50,7 +50,7 @@ enter = function(email, password){
 	Parse.User.logIn(email, password,{
 		success: function(user){
 			//console.log('Checkpoint 2');
-			alert('You have logged in!');
+			//alert('You have logged in!');
 			window.location.href = "app.html"
 		},
 		error: function(user, error){
@@ -76,7 +76,6 @@ keepUser = function(){
 		//Show the signup or login page
 	}
 }
-
 $(document).ready(keepUser);
 
 $('.navbar-brand').click(function(){
