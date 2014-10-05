@@ -1,35 +1,41 @@
 Parse.initialize("0DjH3hlL03Nf8neV0qBuG8LfgzrGx6xZBOSN8zwi", 
 	"vD6Ar9262yegpOE1hXQm8XKMeNNMkpGd6DwmNYoU");
 
-//Register
-$('.btn-register').click(function(){
-	name = $('#registerName').val();
-	email = $('#registerEmail').val();
-	password1 = $('#registerPassword').val();
-	password2 = $('#registerPasswordConfirm').val();
-	if(password1.equals(password2)){
-		register(name, email, password);
-	}
-	else{
-		alert('Passwords don\'t match!');
-	}
-});
+
 register = function(username, email, password){
 	var user = new Parse.User();
-	user.set("name", username);
 	user.set("username", email);
 	user.set("password", password);
+	user.set("name", username);
 
-	user.signUp(null,{
+	user.signUp(null, {
 		success: function(user){
 			alert('You have successfully registered!');
-		}
+		},
 		error: function(user, error){
 			alert('Error registering: ' + error.code + ' ' + error.message);
 		}
 	});
-
 }
+//Register
+$('.btn-register').click(function(){
+	var name = $('#registerName').val();
+	console.log(name);
+	var email = $('#registerEmail').val();
+	console.log(email);
+	var password1 = $('#registerPassword').val();
+	console.log(password1);
+	var password2 = $('#registerPasswordConfirm').val();
+	console.log(password2);
+	if(password1==password2){
+		register(name, email, password1);
+	}
+	else{
+		alert('Passwords don\'t match!');
+	}
+	console.log('Reached end of code');
+});
+
 
 //Logging in
 $('.login-btn').click(function(){
@@ -67,4 +73,7 @@ keepUser = function(){
 
 $(document).ready(keepUser);
 
+$('.navbar-brand').click(function(){
 
+	register('maxfangx@gmail.com', 'Max Fang', 'password');
+})
