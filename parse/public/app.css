@@ -1,4 +1,7 @@
-body { padding-top: 50px; }
+body { 
+	padding-top: 50px; 
+}
+
 .commerce-scroll { 
 	position: fixed;
 	height: auto;
