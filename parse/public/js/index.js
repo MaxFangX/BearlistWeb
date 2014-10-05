@@ -11,6 +11,7 @@ register = function(username, email, password){
 	user.signUp(null, {
 		success: function(user){
 			alert('You have successfully registered!');
+			document.location.href = 'app.html';
 		},
 		error: function(user, error){
 			alert('Error registering: ' + error.code + ' ' + error.message);
