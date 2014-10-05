@@ -2,42 +2,53 @@
 Parse.initialize("0DjH3hlL03Nf8neV0qBuG8LfgzrGx6xZBOSN8zwi", 
 	"vD6Ar9262yegpOE1hXQm8XKMeNNMkpGd6DwmNYoU");
 
+
 //Saves something to database and can alert if it was done successfully
 simpleSave = function(obj){
-	obj.save(null, {
-	  success: function(obj) {
-	    // Execute any logic that should take place after the object is saved. 
-	    // Uncomment for debugging
-	    alert('New object created with objectId: ' + obj.id);
-	  },
-	  error: function(obj, error) {
-	    // Execute any logic that should take place if the save fails.
-	    // error is a Parse.Error with an error code and message.
-	    // Uncomment for debugging.
-	    alert('Failed to create new object, with error code: ' + error.message);
-	  }
+	obj.save().
+	then(function(obj) {
+      // Execute any logic that should take place after the object is saved. 
+      // Uncomment for debugging
+      alert('New object created with objectId: ' + obj.id);
+    }, function(error) {
+      // Execute any logic that should take place if the save fails.
+      // error is a Parse.Error with an error code and message.
+      // Uncomment for debugging.
+      alert('Failed to create new object, with error code: ' + error.message);
+    });
+}
+
+//Testing purposes
+$("#brand").click(function(){
+	//alert('test');
+	getPostNumber();
+});
+
+getAllPostIds = function(){
+	var q = new Parse.Query("Post");
+	return q.find().then(function(objects)) {
+		// Note(thomas): this may need to be function(index, object)
+		return Parse._.map(objects, function(object) {
+			return object.id;
+		});
 	});
 }
 
-$("#brand").click(function(){
-	//alert('test');
-	htmlString = '';
-	htmlString += '<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title">';
-	htmlString += getCollapse();
-	htmlString += getTitle();
-	htmlString += '<br>';
-	htmlString += getDateTime();
-	htmlString += '</a></h4></div><div id="collapseOne" class="panel-collapse collapse"><div class="panel-body">';
-	htmlString += getDescription();
-	htmlString += '<div class="container"><div class="row" style="width: 90%"><div class="col-xs-6 col-md-3"><a href="#" class="thumbnail">';
-	htmlString += getImage();
-	htmlString += '</a></div></div></div></div></div></div>';
-	$('.panel .panel-default').append(htmlString);
-});
+
+//Gets number of new posts
+getPostNumber = function(){
+	var posts = document.getElementsByClassName('panel-title');
+	//alert(posts.length);
+	if(posts == null){
+		return 1;
+	}
+	return posts.length+1;
+}
 
 getCollapse = function(){
-
-	return '<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">';
+	var result = '<a data-toggle="collapse" data-parent="#accordion" href="#collapse';
+	result += getPostNumber();
+	result += '">';
 }
 
 getTitle = function(){
@@ -59,7 +70,22 @@ getImage = function(){
 	return '<img src="http://i.imgur.com/b8SsFnhs.jpg" alt="...">';
 }
 
-
+addPost = function(){
+	htmlString = '';
+	htmlString += '<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title">';
+	htmlString += getCollapse();
+	htmlString += getTitle();
+	htmlString += '<br>';
+	htmlString += getDateTime();
+	htmlString += '</a></h4></div><div id="collapse';
+	htmlString += getPostNumber();
+	htmlString += '" class="panel-collapse collapse"><div class="panel-body">';
+	htmlString += getDescription();
+	htmlString += '<div class="container"><div class="row" style="width: 90%"><div class="col-xs-6 col-md-3"><a href="#" class="thumbnail">';
+	htmlString += getImage();
+	htmlString += '</a></div></div></div></div></div></div>';
+	$('.panel .panel-default').append(htmlString);
+}
 
 
 
