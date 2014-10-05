@@ -142,7 +142,7 @@ postedByCurrentUser = function(){
 
 addPost = function(email, title, description, created){
 	var htmlString = '';
-	htmlString += '<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion-new" href="#collapse'+getPostNumber()+'">'+title+'<br><small>Posted at '+created+'</small></a></h4></div><div id="collapse'+getPostNumber()+'" class="panel-collapse collapse"><!-- Listing content --><div class="panel-body"><p>'+description+'</p><!-- Thumbnails in listing content --><div class="container"> <div class="row" style="width: 90%"><div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="http://i.imgur.com/2udI0ews.jpg" alt="..."></a></div></div></div></div></div></div> <!-- End div for one listing lols -->';
+	htmlString += '<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion-new" href="#collapse'+getPostNumber()+'">'+title+'<br><small>Posted at '+created+'</small></a></h4></div><div id="collapse'+getPostNumber()+'" class="panel-collapse collapse"><!-- Listing content --><div class="panel-body"><p>'+description+'</p><!-- Thumbnails in listing content --><div class="container"> <div class="row" style="width: 90%"><div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="http://puu.sh/c0t1U/d27dbe3f84.jpg" alt="..."></a></div></div></div></div></div></div> <!-- End div for one listing lols -->';
 
 	$('#accordion-new').append(htmlString);
 }
