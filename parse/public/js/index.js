@@ -1,6 +1,19 @@
 Parse.initialize("0DjH3hlL03Nf8neV0qBuG8LfgzrGx6xZBOSN8zwi", 
 	"vD6Ar9262yegpOE1hXQm8XKMeNNMkpGd6DwmNYoU");
 
+$('.btn-register').click(function(){
+	username = $('#registerName').val();
+	email = $('#registerEmail').val();
+	password1 = $('#registerPassword').val();
+	password2 = $('#registerPasswordConfirm').val();
+	if(password1.equals(password2)){
+		register(username, email, password);
+	}
+	else{
+		alert('Passwords don\'t match!');
+	}
+});
+
 register = function(username, email, password){
 	var user = new Parse.User();
 	user.set("username", username);

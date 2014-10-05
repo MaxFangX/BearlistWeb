@@ -26,7 +26,6 @@ $('.upload-btn').click(function(){
 });
 
 
-
 //Makes a new post
 makePost = function(email, title, description){
 	var Post = Parse.Object.extend("post");
@@ -39,6 +38,7 @@ makePost = function(email, title, description){
 	  success: function(p) {
 	    // Execute any logic that should take place after the object is saved.
 	    //alert('New object created with objectId: ' + p.id);
+	    $('.alert-success').removeClass('hidden');
 	  },
 	  error: function(p, error) {
 	    // Execute any logic that should take place if the save fails.
@@ -119,7 +119,7 @@ $('.sell-btn').click(function(){
 	$('.sell-page').addClass('last-page');
 }});
 $('.my-listings-btn').click(function(){
-	if($('.my-listing-page').hasClass('last-page')){}
+	if($('.mylisting-page').hasClass('last-page')){}
 	else{
 	$('.mylisting-page').removeClass('hidden');
 	$('.last-page').addClass('hidden');
