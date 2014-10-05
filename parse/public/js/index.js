@@ -16,6 +16,8 @@ register = function(username, email, password){
 			alert('Error registering: ' + error.code + ' ' + error.message);
 		}
 	});
+	event.preventDefault();
+
 }
 //Register
 $('.btn-register').click(function(){
