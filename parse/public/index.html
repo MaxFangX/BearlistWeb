@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="main.css">
+    <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
   </head>
   <body>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -23,7 +25,7 @@
           <form class="navbar-form navbar-right" role="search">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Email">
-              <input type="text" class="form-control" placeholder="Yo booty">
+              <input type="text" class="form-control" placeholder="Password">
             </div>
             <button type="submit" class="btn btn-default">Login</button>
           </form>
@@ -32,16 +34,34 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container" style="padding-top:75px; margin-left:0;">
+    <div class="container" style="padding-top:75px; margin-left:0;height: 100%;width:50%">
         <div class="row">
-            <div class="col-md-6 col-sm-12 index-header">
+            <div class="index-header" style="width:100%">
                 <img src="poop.png" style="left: 50px">
                 <p style="margin-left:50px; letter-spacing:1.5px;">Buy and sell from fellow local college students</p>
             </div>
         </div>
         <!-- /.row -->
+        <div class="well well-lg well-register">
+          <form role="form">
+            <div class="form-group">
+              <label for="registerName">Full Name</label>
+              <input type="register-name" class="form-control register-form" id="registerName" placeholder="John Smith">
+            </div>
+            <div class="form-group">
+              <label for="registerEmail">.edu Email Address</label>
+              <input type="register-email" class="form-control register-form" id="registerEmail" placeholder="john.smith@berkeley.edu">
+            </div>
+            <div class="form-group">
+              <label for="registerPassword">Password</label>
+              <input type="register-password" class="form-control register-form" id="registerPassword" placeholder="Choose a password">
+              <input type="register-password" class="form-control register-form" id="registerPasswordConfirm" placeholder="Confirm password" style="margin-top:3px;">
+            </div>
+            <button type="submit" class="btn btn-default btn-register">Register me!</button>
+          </form>
+        </div>
     </div>
     <!-- /.container -->
-
+    <script src="js/index.js"></script>
   </body>
 </html>
