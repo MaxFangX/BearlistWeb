@@ -17,11 +17,13 @@ getAllPosts = function(){
 }
 
 //Function that is called when submit is pressed
-$('upload-btn').submit()
+$('.upload-btn').click(function(){
+	$('#post-description').val();
+	console.log('Getting post description successful');
+	alert(oijerf);
+});
 
-submitPost = function(){
 
-}
 
 //Makes a new post
 makePost = function(email, title, description){
