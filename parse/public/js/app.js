@@ -17,11 +17,15 @@ getAllPosts = function(){
 }
 
 //Function that is called when submit is pressed
-$('upload-btn').submit()
+$('.upload-btn').click(function(){
+	var title = $('#post-title').val();
+	var description = $('#post-description').val();
 
-submitPost = function(){
+	console.log('Getting post description successful');
+	alert(oijerf);
+});
 
-}
+
 
 //Makes a new post
 makePost = function(email, title, description){
@@ -97,6 +101,28 @@ addPost = function(){
 	htmlString += '</a></div></div></div></div></div></div>';
 	$('.panel .panel-default').append(htmlString);
 }
+
+$('.buy-btn').click(function(){
+	if(!this.hasClass('active-section')){
+		var last = $('.active-section');
+		last.removeClass(active-section);
+		last.addClass('hidden');
+		this.addClass(active-section);
+		this.removeClass('hidden');
+
+
+	}
+});
+$('.sell-btn').click(function(){
+alert('this works!');
+});
+$('.my-listings-btn').click(function(){
+alert('this works!');
+});
+//TODO
+$('.messages-btn').click(function(){
+alert('this works!');
+});
 
 //Testing purposes
 $("#brand").click(function(){

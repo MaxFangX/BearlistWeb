@@ -42,10 +42,10 @@
         <div class="panel-body" style="padding: 0px;">
           <ul class="nav nav-pills nav-stacked">
             <li>
-              <a href="#">Buy</a>
-              <a href="#">Sell</a>
-              <a href="#">My Listings</a>
-              <a href="#"><span class="badge pull-right">##Msgs</span>Messages</a>
+              <a class="buy-btn active-section" href="#">Buy</a>
+              <a class="sell-btn last-section" href="#">Sell</a>
+              <a class="my-listings-btn" href="#">My Listings</a>
+              <a class="messages-btn" href="#"><span class="badge pull-right">##Msgs</span>Messages</a>
             </li>
           </ul>
         </div>
@@ -54,24 +54,24 @@
     <div id="page-right" style="width: calc(100% - 200px); float:right;">
       <div class="panel-body" role="commerce-feed">
         <!-- ALERTS - implement max! -->
-        <div class="alert alert-success" role="alert-success">You have successfully submitted your listing!</div>
-        <div class="alert alert-danger" role="alert-success">fuckin retard u didnt fill out the _____</div>
+        <div class="alert alert-success hidden" role="alert-success">You have successfully submitted your listing!</div>
+        <div class="alert alert-danger hidden" role="alert-success">fuckin retard u didnt fill out the _____</div>
         <!-- Sell page -->
-        <div class="panel panel-primary sell-page">
-          <div class="panel-heading">Post a Listing</div>
+        <div class="hidden panel panel-primary sell-page">
+          <div class="panel-heading ">Post a Listing</div>
             <form name="form-post" role="form">
               <div class="form-group"> <!-- Title input bar -->
                 <label for="sellInputTitle">Title</label>
-                <input type="text" class="form-control" id="sellInputTitle" placeholder="Moving out - selling futon, floor lamp, roommate" style="min-width: 35em; width: 50%;">
+                <input type="text" class="form-control" id="post-title" placeholder="Moving out - selling futon, floor lamp, roommate" style="min-width: 35em; width: 50%;">
               </div>
 
               <div class="form-group"> <!-- Description input bar -->
                 <label for="sellInputDescription">Description</label>
-                <textarea class="form-control" rows="5" style="min-width: 35em; width: 50%;">Futon - $50 OBO&#10;Floor lamp - dented but works $5&#10;Roommate must go</textarea>
+                <textarea id="post-description" class="form-control" rows="5" style="min-width: 35em; width: 50%;">Futon - $50 OBO&#10;Floor lamp - dented but works $5&#10;Roommate must go</textarea>
               </div>
               <div class="form-group">
                 <label for="sellInputFile">Upload a picture.</label>
-                <input type="file" id="sellInputFile">
+                <input name="post-picture" type="file" id="sellInputFile">
               </div>
               <div class="form-group">
                 <button type="submit" class="btn btn-default upload-btn">Submit</button>
@@ -111,7 +111,7 @@
             </div>
           </div>
         <!-- My listings -->
-        <div class="panel panel-primary mylisting-page">
+        <div class="hidden panel panel-primary mylisting-page">
           <!-- Default panel contents -->
           <div class="panel-heading">Your Listings</div>
           <!-- Accordion group -->
@@ -143,7 +143,7 @@
               </div> <!-- End div for one listing lols -->
             </div>
           </div>
-          <div class="panel panel-primary chat-page">
+          <div class="hidden panel panel-primary chat-page">
             <div class="panel-heading">Chat</div>
           </div>
         </div> <!-- Commerce end div -->
