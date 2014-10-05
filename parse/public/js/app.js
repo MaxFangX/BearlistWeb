@@ -18,13 +18,55 @@ simpleSave = function(obj){
     });
 }
 
+
+
+//Makes a new post
+makePost = function(email, title, description){
+	var Post = Parse.Object.extend("post");
+	var p = new Post();
+	p.set("author",email);
+	p.set("title", title);
+	p.set("description", description);
+	console.log('post created');
+	p.save(null, {
+	  success: function(p) {
+	    // Execute any logic that should take place after the object is saved.
+	    //alert('New object created with objectId: ' + p.id);
+	  },
+	  error: function(p, error) {
+	    // Execute any logic that should take place if the save fails.
+	    // error is a Parse.Error with an error code and message.
+	    //alert('Failed to create new object, with error code: ' + error.message);
+	  }
+	});
+}
+
+
+
+
+getAllPosts = function(){
+	var Post = Parse.Object.extend("post");
+	var query = new Parse.Query(Post);
+	query.find({
+		success: function(results){
+			alert('Retrieved '+results.length+' results.');
+		},
+		error: function(error){
+			alert("Error: " + error.code + " " + error.message);
+		}
+	});
+}
+
+
 //Testing purposes
 $("#brand").click(function(){
 	//alert('test');
-	getPostNumber();
+	//makePost('maxfangx@gmail.com', '63 XXL Condoms', 'Courtesy of David Nguyen');
+	getAllPosts();
 });
 
-getAllPostIds = function(){
+//Facebook guy implementation
+/*getAllPostIds = function(){
 	var q = new Parse.Query("Post");
 	return q.find().then(function(objects)) {
 		// Note(thomas): this may need to be function(index, object)
@@ -32,7 +74,11 @@ getAllPostIds = function(){
 			return object.id;
 		});
 	});
-}
+}*/
+
+
+
+
 
 
 //Gets number of new posts
@@ -44,27 +90,27 @@ getPostNumber = function(){
 	}
 	return posts.length+1;
 }
-
+//Completed
 getCollapse = function(){
 	var result = '<a data-toggle="collapse" data-parent="#accordion" href="#collapse';
 	result += getPostNumber();
 	result += '">';
 }
-
+//Completed
 getTitle = function(){
 	return 'Max For Sale';
 }
-
+//TODO
 getDateTime = function(){
 	
 	return '<small>Posted one hour ago at 3:35 PM 10/4/2014</small>';
 }
-
+//TODO
 getDescription = function(){
 
 	return '<p>very sxc bod sxc men sxc much cheap 58 cents (btw when the machines take over you can make change of that 1294 ways lols)</p>';
 }
-
+//TODO
 getImage = function(){
 
 	return '<img src="http://i.imgur.com/b8SsFnhs.jpg" alt="...">';
