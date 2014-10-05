@@ -24,6 +24,10 @@ $('.msg-user').click(function(){
 	// }
 });
 
+$('.messages-btn').click(function(){
+	init_timeline();
+});
+
 
 function init_timeline() {
     var init_options = {
