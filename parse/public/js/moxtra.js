@@ -15,7 +15,7 @@ function get_token(other_user) {
     var init_options = {
         uniqueid: uniqueid,
         uniqueid2: other_user,
-        firstname: name,
+        firstname: uniqueid,
         lastname: " ",
         timestamp: timestamp,
         signature: signature,
@@ -63,4 +63,48 @@ function startchat(access_token, uniqueid2) {
 	    }
 	};
 	Moxtra.chat(options);
+}
+
+function timeline() {
+	var options = {
+	    iframe: true,
+	    tagid4iframe: "chatcontainer",
+	    iframewidth: "100%",
+	    iframeheight: "100%",
+	    autostart_meet: true,
+	    autostart_note: true,
+	    extension: { "show_dialogs": { "meet_invite": true } },
+	    start_timeline: function(event) {
+	        alert("Timeline started session Id: " + event.session_id + " binder id: " + event.binder_id);
+	    },
+	    view_binder: function(event) {
+	        alert("Binder switched session Id: " + event.session_id + " binder id: " + event.binder_id);
+	    },
+	    invite_member: function(event) {
+	        alert("Invite member into binder Id: " + event.binder_id);
+	    },
+	    start_meet: function(event) {
+	        alert("Meet started session key: " + event.session_key + " session id: " + event.session_id);
+	    },
+	    end_meet: function(event) {
+	        alert("Meet end event");
+	    },
+	    save_meet: function(event) {
+	        alert("Meet saved on binder: " + event.binder_id);
+	    },
+	    start_note: function(event) {
+	        alert("session key: " + event.session_key + " session id: " + event.session_id);
+	    },
+	    save_note: function(event) {
+	        alert("Note saved on binder: " + event.destination_binder_id);
+	    },
+	    cancel_note: function(event) {
+	        alert("Note cancelled");
+	    },
+	    error: function(event) {
+	        alert("Timeline error code: " + event.error_code + " error message: " + event.error_message);
+	    }
+	};
+Moxtra.timeline(options);
+
 }
