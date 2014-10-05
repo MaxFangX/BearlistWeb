@@ -103,34 +103,38 @@ addPost = function(){
 }
 
 $('.buy-btn').click(function(){
-	var current = $('.buy-btn');
-	if(!current.hasClass('active-section')){
-		var last = $('.active-section');
-		last.removeClass(active-section);
-		last.addClass('hidden');
-		current.addClass(active-section);
-		current.removeClass('hidden');
-
-	}
-});
+	if($('.buy-page').hasClass('last-page')){}
+	else{
+	$('.buy-page').removeClass('hidden');
+	$('.last-page').addClass('hidden');
+	$('.last-page').removeClass('last-page');
+	$('.buy-page').addClass('last-page');
+}});
 $('.sell-btn').click(function(){
-	var current = $('.sell-btn');
-	if(!current.hasClass('active-section')){
-		var last = $('.active-section');
-		last.removeClass(active-section);
-		last.addClass('hidden');
-		current.addClass(active-section);
-		current.removeClass('hidden');
-
-	}
-});
+	if($('.sell-page').hasClass('last-page')){}
+	else{
+	$('.sell-page').removeClass('hidden');
+	$('.last-page').addClass('hidden');
+	$('.last-page').removeClass('last-page');
+	$('.sell-page').addClass('last-page');
+}});
 $('.my-listings-btn').click(function(){
-alert('this works!');
-});
+	if($('.my-listing-page').hasClass('last-page')){}
+	else{
+	$('.mylisting-page').removeClass('hidden');
+	$('.last-page').addClass('hidden');
+	$('.last-page').removeClass('last-page');
+	$('.mylisting-page').addClass('last-page');
+}});
 //TODO
 $('.messages-btn').click(function(){
-alert('this works!');
-});
+	if($('.chat-page').hasClass('last-page')){}
+	else{
+	$('.chat-page').removeClass('hidden');
+	$('.last-page').addClass('hidden');
+	$('.last-page').removeClass('last-page');
+	$('.chat-page').addClass('last-page');
+}});
 
 //Testing purposes
 $("#brand").click(function(){
