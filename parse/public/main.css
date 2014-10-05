@@ -1,1 +1,16 @@
-body { padding-top: 70px; }
+body {
+	background: url(index.jpg) no-repeat center center fixed;
+	width: 100%;
+	height: 100%;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
+
+.index-header {
+	color: #ffffff;
+}
+
+body { padding-top: 0px; }
+
