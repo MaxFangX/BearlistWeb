@@ -22,8 +22,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="test.php">Mobile</a></li>
+        <li ><a href="index.html">Home</a></li>
+        <li class="active"><a href="app.html">App</a></li>
       </ul>
       <form class="navbar-form navbar-right" role="search">
         <div class="input-group">
@@ -37,7 +37,6 @@
 </nav>
 
   <div id="main-content" style="overflow:auto; width:98%; margin:0 auto; overflow: hidden;">
-
     <div id="nav-left" style="width:200px; float:left; margin-top: 15px;">
       <div class="panel panel-default">
         <div class="panel-body" style="padding: 0px;">
@@ -52,40 +51,60 @@
         </div>
       </div>
     </div>
-    <div id="commerce-right" style="width: calc(100% - 200px); float:right;">
+    <div id="page-right" style="width: calc(100% - 200px); float:right;">
       <div class="panel-body" role="commerce-feed">
-        <div class="panel panel-primary">
+        <div class="panel panel-primary sell-page">
+          <div class="panel-heading">Post a Listing</div>
+            <form role="form">
+              <div class="form-group"> <!-- Title input bar -->
+                <label for="sellInputTitle">Title</label>
+                <input type="text" class="form-control" id="sellInputTitle" placeholder="Moving out - selling futon, floor lamp, roommate" style="min-width: 35em; width: 50%;">
+              </div>
+
+              <div class="form-group"> <!-- Description input bar -->
+                <label for="sellInputDescription">Description</label>
+                <textarea class="form-control" rows="5" style="min-width: 35em; width: 50%;">Futon - $50 OBO&#10;Floor lamp - dented but works $5&#10;Roommate must go</textarea>
+              </div>
+              <div class="form-group">
+                <label for="sellInputFile">Upload a picture.</label>
+                <input type="file" id="sellInputFile">
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-default">Submit</button>
+              </div>
+        </div>
+        <div class="panel panel-primary buy-page">
           <!-- Default panel contents -->
           <div class="panel-heading">Newest Listings</div>
 
           <!-- Accordion group -->
             <div class="panel-group" id="accordion" style="padding:5px;">
               <div class="panel panel-default"> <!-- This is ONE listing -->
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                <div class="panel-heading"> <!-- Panel header for collapsing thing -->
+                  <h4 class="panel-title"> 
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
                       Max For Sale<br><small>Posted one hour ago at 3:35 PM 10/4/2014</small>
                     </a>
                   </h4>
-
                 </div>
-                <div id="collapseOne" class="panel-collapse collapse">
+                <div id="collapse1" class="panel-collapse collapse">
                   <!-- Listing content -->
                   <div class="panel-body">
                     <p>very sxc bod sxc men sxc much cheap 58 cents (btw when the machines take over you can make change of that 1294 ways lols)</p>
                     <!-- Thumbnails in listing content -->
                     <div class="container"> 
                       <div class="row" style="width: 90%">
-                          <div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="http://i.imgur.com/2udI0ews.jpg" alt="..."></a></div>
-                          <div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="http://i.imgur.com/ZteQfK7s.jpg" alt="..."></a></div>
-                          <div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="http://i.imgur.com/ZaYyS6As.jpg" alt="..."></a></div>
-                          <div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="http://i.imgur.com/Ue9e887s.jpg" alt="..."></a></div>
-                          <div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="http://i.imgur.com/b8SsFnhs.jpg" alt="..."></a></div>
+                        <div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="http://i.imgur.com/2udI0ews.jpg" alt="..."></a></div>
+                        <div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="http://i.imgur.com/ZteQfK7s.jpg" alt="..."></a></div>
+                        <div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="http://i.imgur.com/ZaYyS6As.jpg" alt="..."></a></div>
+                        <div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="http://i.imgur.com/Ue9e887s.jpg" alt="..."></a></div>
+                        <div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="http://i.imgur.com/b8SsFnhs.jpg" alt="..."></a></div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> <!-- End div for one listing lols -->
+              
             </div>
           </div>
         </div>

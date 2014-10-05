@@ -8,3 +8,8 @@ body { padding-top: 50px; }
 	overflow-y: scroll;
 	margin-top: 10px;
 }
+
+.form-group {
+	margin: 10px;
+	margin-left: 15px;
+}
