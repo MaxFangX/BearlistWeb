@@ -97,36 +97,32 @@ getAllPosts = function(){
 
 //Display all the posts
 addAllPosts = function(postArr){
-	var Post = Parse.Object.extend("post");
-	var query = new Parse.Query(Post);
-
-	for(i = 0; i < 3; i++){
+	// var Post = Parse.Object.extend("post");
+	// var query = new Parse.Query(Post);
+	for(i = 0; i < postArr.length; i++){
 		id = postArr[i].id;
 		//console.log(id);
-		query.get(id, {
-		  success: function(query) {
+		// query.get(id, {
+		  // success: function(query) {
 		    // The object was retrieved successfully.
 		    //alert('GetCurrentUserEmail() successful');
-		    var email = query.get("author");
+		    var email = postArr[i].get("author");
 			console.log('email: '+ email);
-			var title = query.get("title");
+			var title = postArr[i].get("title");
 			console.log('title: '+ title);
-			var description = query.get("description");
+			var description = postArr[i].get("description");
 			console.log('description: '+description);
-			var created = query.get("createdAt");
+			var created = postArr[i].get("createdAt");
 			console.log('created: '+created);
 			addPost(email, title, description, created);
-		  },
-		  error: function(object, error) {
-		    // The object was not retrieved successfully.
-		    // error is a Parse.Error with an error code and message.
-		    alert('GetCurrentUserEmail() failed');
-		    return 'bad email';
-		  }
-		});		
-
-
-
+		  // },
+		  // error: function(object, error) {
+		  //   // The object was not retrieved successfully.
+		  //   // error is a Parse.Error with an error code and message.
+		  //   //alert('GetCurrentUserEmail() failed');
+		  //   return 'bad email';
+		  // }
+		// }		
 	}
 }
 
@@ -146,9 +142,9 @@ postedByCurrentUser = function(){
 
 addPost = function(email, title, description, created){
 	var htmlString = '';
-	htmlString += '<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse'+getPostNumber()+'">'+title+'<br><small>Posted at '+created+'</small></a></h4></div><div id="collapse'+getPostNumber()+'" class="panel-collapse collapse"><!-- Listing content --><div class="panel-body"><p>'+description+'</p><!-- Thumbnails in listing content --><div class="container"> <div class="row" style="width: 90%"><div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="http://i.imgur.com/2udI0ews.jpg" alt="..."></a></div></div></div></div></div></div> <!-- End div for one listing lols -->';
+	htmlString += '<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion-new" href="#collapse'+getPostNumber()+'">'+title+'<br><small>Posted at '+created+'</small></a></h4></div><div id="collapse'+getPostNumber()+'" class="panel-collapse collapse"><!-- Listing content --><div class="panel-body"><p>'+description+'</p><!-- Thumbnails in listing content --><div class="container"> <div class="row" style="width: 90%"><div class="col-xs-6 col-md-3"><a href="#" class="thumbnail"><img src="http://i.imgur.com/2udI0ews.jpg" alt="..."></a></div></div></div></div></div></div> <!-- End div for one listing lols -->';
 
-	$('.panel .panel-default').append(htmlString);
+	$('#accordion-new').append(htmlString);
 }
 
 //Toggling
@@ -201,7 +197,12 @@ keepUser = function(){
 		document.location.replace('index.html');
 	}
 }
-$(document).ready(keepUser);
+main = function(){
+	keepUser();
+	getAllPosts();
+}
+
+$(document).ready(main);
 
 //Testing purposes
 $("#brand").click(function(){
@@ -210,7 +211,7 @@ $("#brand").click(function(){
 	//getAllPosts();
 	
 	//exit();
-	getAllPosts();
+	//getAllPosts();
 
 });
 
