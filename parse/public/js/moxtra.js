@@ -12,13 +12,22 @@ var name = Parse.User.current().fetch().then(function (user) {
 });
 
 $('.msg-user').click(function(){
-	alert('this button fucking works faggot');
-	timeline();
+	//alert('this button fucking works faggot');
+	//init_timeline();
+	get_token('xiEAMO6ozn');
+	// if($('.chat-page').hasClass('last-page')){}
+	// else{
+	// $('.chat-page').removeClass('hidden');
+	// $('.last-page').addClass('hidden');
+	// $('.last-page').removeClass('last-page');
+	// $('.chat-page').addClass('last-page');
+	// }
 });
+
+
 function init_timeline() {
     var init_options = {
         uniqueid: uniqueid,
-        uniqueid2: other_user,
         firstname: uniqueid,
         lastname: " ",
         timestamp: timestamp,
@@ -35,17 +44,17 @@ function init_timeline() {
 }
 
 
-function get_token(other_user) {
+function get_token() {
     var init_options = {
         uniqueid: uniqueid,
-        uniqueid2: other_user,
+        // uniqueid2: other_user,
         firstname: uniqueid,
         lastname: " ",
         timestamp: timestamp,
         signature: signature,
         get_accesstoken: function(result) {
             console.log("access_token: " + result.access_token + " expires in: " + result.expires_in);
-            startchat(result.access_token, uniqueid2);
+            startchat(result.access_token);
         },
         error: function(result) {
             console.log("error code: " + result.error_code + " message: " + result.error_message);
@@ -54,9 +63,9 @@ function get_token(other_user) {
     Moxtra.setup(init_options);
 }
 
-function startchat(access_token, uniqueid2) {
+function startchat(access_token) {
 	var options = {
-	    unique_id: uniqueid + "," + uniqueid2,
+	    unique_id: uniqueid + ",xiEAMO6ozn",
 	    iframe: false,
 	    tagid4iframe: "chatcontainer",
 	    iframewidth: "820px",
